@@ -1,25 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import axios from 'axios';
+import Timer from './Timer';
 
-function App() {
+export default function App() {
+
+  const action = () => axios.get('https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws/britbox_us_barker_one/eu-west-1');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Timer millis={5000} action={action} /> 
   );
-}
-
-export default App;
+ }

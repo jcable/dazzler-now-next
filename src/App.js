@@ -76,7 +76,7 @@ function NowNext() {
   }, [text]);
   console.log(vis, text);
   if (vis) {
-    return (<Box sx={{backgroundColor: blueGrey}}>{text}</Box>);    
+    return (<Box sx={{background: blueGrey}}>{text}</Box>);    
   }
   return "";
 }

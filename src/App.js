@@ -44,8 +44,8 @@ function NowNext() {
     let interval = null;
     interval = setInterval(() => {
         const d = new Date();
-        // if ([0,5,10,15,20,25,30,35,40,45,50,55].includes(d.getMinutes())) {
-        if (true) {
+        if ([0,5,10,15,20,25,30,35,40,45,50,55].includes(d.getMinutes())) {
+        //if (true) {
           (async () => {
             const r = await axios.get('https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws/britbox_us_barker_one/eu-west-1');
             const next = r.data.next;
@@ -67,7 +67,7 @@ function NowNext() {
         if ([0,1,2,3,4,5].includes(d.getSeconds())) {
           setVis(true);
         } else {
-          setVis(true);
+          setVis(false);
         }
       }, 5000);
     return () => clearInterval(interval);

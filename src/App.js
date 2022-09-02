@@ -1,15 +1,39 @@
-// import './App.css';
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import Fade from '@mui/material/Fade';
+import Typography from '@mui/material/Typography';
 import { alpha, styled } from '@mui/material/styles';
 import axios from 'axios';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { blueGrey } from '@mui/material/colors';
+
+const Left = styled(Paper)(({ theme }) => ({
+  backgroundColor: alpha('#000', 0),
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+const Center = styled(Paper)(({ theme }) => ({
+  backgroundColor: alpha('#000', 0),
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+const Right = styled(Paper)(({ theme }) => ({
+  backgroundColor: alpha('#000', 0),
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 const Upper = styled(Paper)(({ theme }) => ({
   backgroundColor: alpha('#000', 0),
@@ -28,7 +52,7 @@ const Middle = styled(Paper)(({ theme }) => ({
 }));
 
 const Lower = styled(Paper)(({ theme }) => ({
-  backgroundColor: alpha('#000', 0),
+  backgroundColor: alpha('#f00', 0),
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -43,7 +67,6 @@ function NowNext() {
   const update = () => {
     const d = new Date();
     if ([0,5,10,15,20,25,30,35,40,45,50,55].includes(d.getMinutes())) {
-    // if (true) {
       (async () => {
         const r = await axios.get('https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws/britbox_us_barker_one/eu-west-1');
         const next = r.data.next;
@@ -76,9 +99,19 @@ function NowNext() {
   }, [text]);
   console.log(vis, text);
   if (vis) {
-    return (<Box sx={{background: blueGrey}}>{text}</Box>);    
+    return (
+      <Fade in={true} timeout={2000}>
+        <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", .9)}}>
+          <Typography>{text}</Typography>
+        </Box>
+      </Fade>
+    );    
   }
-  return "";
+  return (
+    <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", 0)}}>
+      <Typography>&nbsp;</Typography>
+    </Box>
+  );
 }
 
 export default function App() {
@@ -91,7 +124,18 @@ export default function App() {
         spacing={2}
         sx={{height: '95vh'}}
       >
-        <Upper elevation={0}></Upper>
+        <Upper elevation={0}>
+          <Stack
+          direction="row"
+          alignItems="center"
+          spacing={2}
+          sx={{width: '100vh'}}
+          >
+            <Box>TL</Box>
+            <Box>TM</Box>
+            <Box>TR</Box>
+          </Stack>
+        </Upper>
         <Middle elevation={0}></Middle>
         <Lower elevation={0}><NowNext/></Lower>
       </Stack>

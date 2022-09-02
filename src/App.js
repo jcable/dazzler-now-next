@@ -1,63 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { alpha, styled } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
 import axios from 'axios';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
-const Left = styled(Paper)(({ theme }) => ({
-  backgroundColor: alpha('#000', 0),
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-const Center = styled(Paper)(({ theme }) => ({
-  backgroundColor: alpha('#000', 0),
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-const Right = styled(Paper)(({ theme }) => ({
-  backgroundColor: alpha('#000', 0),
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-const Upper = styled(Paper)(({ theme }) => ({
-  backgroundColor: alpha('#000', 0),
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-const Middle = styled(Paper)(({ theme }) => ({
-  backgroundColor: alpha('#000', 0),
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-const Lower = styled(Paper)(({ theme }) => ({
-  backgroundColor: alpha('#f00', 0),
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 function NowNext() {
 
@@ -88,7 +38,7 @@ function NowNext() {
     if ([0,1,2,3,4,5].includes(d.getSeconds())) {
       setVis(true);
     } else {
-      setVis(false);
+      setVis(true);
     }
   };
 
@@ -115,30 +65,22 @@ function NowNext() {
 }
 
 export default function App() {
+  const b=0;
   return (
-    <Box sx={{ width: '100%' }}>
-      <Stack
-        direction="column"
-        justifyContent="space-around"
-        alignItems="center"
-        spacing={2}
-        sx={{height: '95vh'}}
-      >
-        <Upper elevation={0}>
-          <Stack
-          direction="row"
-          alignItems="center"
-          spacing={2}
-          sx={{width: '100vh'}}
-          >
-            <Box>TL</Box>
-            <Box>TM</Box>
-            <Box>TR</Box>
-          </Stack>
-        </Upper>
-        <Middle elevation={0}></Middle>
-        <Lower elevation={0}><NowNext/></Lower>
-      </Stack>
+    <Box sx={{width: '100%', backgroundColor: alpha('#000', 0) }}>
+    <Box sx={{height: '98vh', display: 'grid', gridTemplateRows: '1fr 1fr 1fr'}}>
+      <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
+        <Box sx={{border: b}}>TL</Box>
+        <Box sx={{border: b}}></Box>
+        <Box sx={{border: b}}>TR</Box>
+      </Box>
+      <Box sx={{border: b}}></Box>
+      <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
+        <Box sx={{border: b}}></Box>
+        <Box sx={{border: b, margin: 'auto'}}><NowNext/></Box>
+        <Box sx={{border: b}}></Box>
+      </Box>
+    </Box>
     </Box>
   );
 }

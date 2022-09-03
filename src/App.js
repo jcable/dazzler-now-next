@@ -79,7 +79,7 @@ function NowNext() {
     return (
       <Fade in={true} timeout={2000}>
         <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", .9)}}>
-          <Typography variant='h1'>{text}</Typography>
+          <Typography variant='h3'>{text}</Typography>
         </Box>
       </Fade>
     );    
@@ -106,7 +106,9 @@ export default function App() {
         <Box sx={{border: b, display: 'block', marginLeft: 'auto'}}><img alt='bounce' src='https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png'/></Box>
       </Box>
       <Box sx={{border: b}}></Box>
-      <Box sx={{border: b, margin: 'auto'}}><NowNext/></Box>
+      <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr'}}>
+        <Box sx={{border: b, margin: 'auto'}}><NowNext/></Box>
+      </Box>
     </Box>
   );
 }

@@ -96,7 +96,7 @@ export default function App() {
   const b=0;
   return (
     <Box sx={{
-      width: '100%', height: '98vh',
+      width: '100%', height: '95vh',
       backgroundColor: alpha('#000', 0),
       display: 'grid', gridTemplateRows: '1fr 1fr 1fr'
      }}>

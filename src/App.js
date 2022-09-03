@@ -10,10 +10,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import logo from './CBeebies.png'
 
-const nn = 'https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws';
+const urls = {
+  test: 'https://jfayiszondlcqngo5vavioz6bq0ibxen.lambda-url.eu-west-1.on.aws/',
+  live: 'https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws'
+};
 
 function chooseNext(next) {
-  if (next.length>0) {
+  if (next?.length>0) {
     return next[0]; // can be made more sophisticated
   }
   return undefined;
@@ -31,11 +34,13 @@ function NowNext() {
     let interval = null;
     interval = setInterval(() => {
       (async () => {
-        const r = await axios.get(`${nn}/${q.get('sid')}/${q.get('region')}`);
+        const url = urls[q.get('env') || 'live'];
+        console.log(url);
+        const r = await axios.get(`${url}/${q.get('sid')}/${q.get('region')}`);
         setNext(chooseNext(r.data.next));
         setNow(r.data.now);
       })();  
-    }, 30000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 

@@ -67,12 +67,18 @@ function NowNext() {
 export default function App() {
   const b=0;
   return (
-    <Box sx={{width: '100%', backgroundColor: alpha('#000', 0) }}>
-    <Box sx={{height: '98vh', display: 'grid', gridTemplateRows: '1fr 1fr 1fr'}}>
+    <Box sx={{
+      width: '100%', height: '98vh',
+      backgroundColor: alpha('#000', 0),
+      display: 'grid', gridTemplateRows: '1fr 1fr 1fr'
+     }}>
       <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
-        <Box sx={{border: b}}>TL</Box>
+        <Box sx={{border: b}}><video
+        autoPlay={true} loop={true} width={150}>
+        <source src='https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4' type='video/mp4'/>
+        </video></Box>
         <Box sx={{border: b}}></Box>
-        <Box sx={{border: b}}>TR</Box>
+        <Box sx={{border: b, display: 'block', marginLeft: 'auto'}}><img alt='bounce' src='https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png'/></Box>
       </Box>
       <Box sx={{border: b}}></Box>
       <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
@@ -80,7 +86,6 @@ export default function App() {
         <Box sx={{border: b, margin: 'auto'}}><NowNext/></Box>
         <Box sx={{border: b}}></Box>
       </Box>
-    </Box>
     </Box>
   );
 }

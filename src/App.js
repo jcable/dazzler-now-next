@@ -79,14 +79,14 @@ function NowNext() {
     return (
       <Fade in={true} timeout={2000}>
         <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", .9)}}>
-          <Typography>{text}</Typography>
+          <Typography variant='h1'>{text}</Typography>
         </Box>
       </Fade>
     );    
   } else {
     return (
       <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", 0)}}>
-        <Typography>&nbsp;</Typography>
+        <Typography >&nbsp;</Typography>
       </Box>
     );
   }

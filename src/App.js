@@ -106,11 +106,7 @@ export default function App() {
         <Box sx={{border: b, display: 'block', marginLeft: 'auto'}}><img alt='bounce' src='https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png'/></Box>
       </Box>
       <Box sx={{border: b}}></Box>
-      <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
-        <Box sx={{border: b}}></Box>
-        <Box sx={{border: b, margin: 'auto'}}><NowNext/></Box>
-        <Box sx={{border: b}}></Box>
-      </Box>
+      <Box sx={{border: b, margin: 'auto'}}><NowNext/></Box>
     </Box>
   );
 }

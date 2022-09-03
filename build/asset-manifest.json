@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/britbox-barker-now-next/static/css/main.8ad87b83.css",
-    "main.js": "/britbox-barker-now-next/static/js/main.b4c973c6.js",
+    "main.js": "/britbox-barker-now-next/static/js/main.f95a2848.js",
     "static/js/787.4d89072e.chunk.js": "/britbox-barker-now-next/static/js/787.4d89072e.chunk.js",
-    "static/media/CBeebies.png": "/britbox-barker-now-next/static/media/CBeebies.05da241570713460ee2f.png",
+    "static/media/CBeebies.png": "/britbox-barker-now-next/static/media/CBeebies.370a90e2922daea9726f.png",
     "static/media/roboto-all-500-normal.woff": "/britbox-barker-now-next/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/britbox-barker-now-next/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
     "static/media/roboto-all-400-normal.woff": "/britbox-barker-now-next/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
@@ -38,11 +38,11 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/britbox-barker-now-next/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/britbox-barker-now-next/index.html",
     "main.8ad87b83.css.map": "/britbox-barker-now-next/static/css/main.8ad87b83.css.map",
-    "main.b4c973c6.js.map": "/britbox-barker-now-next/static/js/main.b4c973c6.js.map",
+    "main.f95a2848.js.map": "/britbox-barker-now-next/static/js/main.f95a2848.js.map",
     "787.4d89072e.chunk.js.map": "/britbox-barker-now-next/static/js/787.4d89072e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8ad87b83.css",
-    "static/js/main.b4c973c6.js"
+    "static/js/main.f95a2848.js"
   ]
 }

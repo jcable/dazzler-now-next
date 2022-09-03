@@ -27,7 +27,6 @@ function NowNext() {
   const [text, setText] = useState('');
   const [now, setNow] = useState();
   const [next, setNext] = useState();
-  const [vis, setVis] = useState(false);
 
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
@@ -45,13 +44,17 @@ function NowNext() {
   }, []);
 
   useEffect(() => {
-    console.log('setText');
+    const q = new URLSearchParams(window.location.search);
+    const n = parseInt(q.get('next') || '10', 10);
     let r;
     if (next) {
       const start = Date.parse(next.start);
       const minutesToNext = Math.round((start-(new Date()))/1000/60);
       console.log('minutes to next start', minutesToNext);
-      if (minutesToNext <= 10) {
+      if (minutesToNext <= 0) {
+        r = '';
+      }
+      if (minutesToNext < n) {
         r = `next up: ${next.title}`;
       }
     }
@@ -59,23 +62,20 @@ function NowNext() {
       setText(r);
     } else {
       if (now) {
-        setText(`now playing: ${now.title}`);
+        if (q.get('sid').includes('britbox')) {
+          setText(`now playing: ${now.title}`);
+        } else {
+          setText(`you are watching ${now.title} - see more on iPlayer`);
+        }
       } else {
         setText('');
       }
     }
   }, [next, now]);
 
-  useEffect(() => {
-    console.log('setVis');
-    if (text === '') {
-      setVis(false);
-    } else {
-      setVis([0,1,2,3,4,5].includes((new Date()).getSeconds()));
-    }
-  }, [text]);
+  console.log('text', text);
 
-  if (vis) {
+  if ([0,1,2,3,4,5].includes((new Date()).getSeconds())) {
     return (
       <Fade in={true} timeout={2000}>
         <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", .9)}}>

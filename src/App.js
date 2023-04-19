@@ -18,8 +18,6 @@ const urls = {
 
 const minDuration = Temporal.Duration.from('PT2M');
 
-console.log('2M', minDuration.toString());
-
 function chooseNext(next) {
   next.forEach(element => {
     console.log(element, Temporal.Duration.from(element.duration));

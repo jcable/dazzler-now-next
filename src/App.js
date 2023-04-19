@@ -63,11 +63,7 @@ function NowNext() {
       setText(r);
     } else {
       if (now) {
-        if (q.get('sid').includes('britbox')) {
-          setText(`now playing: ${now.title}`);
-        } else {
-          setText(`you are watching ${now.title} - see more on iPlayer`);
-        }
+        setText(`now playing: ${now.title}`);
       } else {
         setText('');
       }

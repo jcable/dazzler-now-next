@@ -19,18 +19,13 @@ const urls = {
 const minDuration = Temporal.Duration.from('PT2M');
 
 function chooseNext(next) {
-  next.forEach(element => {
-    console.log(element, Temporal.Duration.from(element.duration));
-  });
   const ok = (next || []).filter((e) => {
     if (e?.duration && e?.title) {
-      console.log(minDuration.toString(), e.duration);
       return Temporal.Duration.compare(minDuration, Temporal.Duration.from(e.duration)) < 0;
     }
     return false;
   });
   if (ok.length > 0) {
-    console.log(ok);
     return ok[0];
   }
   return { title: '' };
@@ -48,7 +43,6 @@ function NowNext() {
     interval = setInterval(() => {
       (async () => {
         const url = urls[q.get('env') || 'live'];
-        console.log(url);
         const r = await axios.get(`${url}/${q.get('sid')}/${q.get('region')}`);
         setNext(chooseNext(r.data.next));
         setNow(r.data.now);

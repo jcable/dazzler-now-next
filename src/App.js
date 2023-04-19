@@ -9,16 +9,23 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import logo from './CBeebies_iPlayer.png'
+import { Temporal } from 'temporal-polyfill'
 
 const urls = {
   test: 'https://jfayiszondlcqngo5vavioz6bq0ibxen.lambda-url.eu-west-1.on.aws/',
   live: 'https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws'
 };
 
+const minDuration = Temporal.Duration.from('PT2M');
+
 function chooseNext(next) {
-  if (next?.length>0) {
-    console.log(next);
-    return next[0]; // can be made more sophisticated
+  const ok = (next || []).filter((e) => Temporal.Duration.from(e.duration) > minDuration);
+  if (ok.length>0) {
+    console.log(ok);
+    ok.forEach(element => {
+      console.log(element, Temporal.Duration.from(element.duration));
+    });
+    return ok[0];
   }
   return undefined;
 }

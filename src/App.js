@@ -17,6 +17,7 @@ const urls = {
 
 function chooseNext(next) {
   if (next?.length>0) {
+    console.log(next);
     return next[0]; // can be made more sophisticated
   }
   return undefined;

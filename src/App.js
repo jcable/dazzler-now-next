@@ -22,8 +22,13 @@ function chooseNext(next) {
   next.forEach(element => {
     console.log(element, Temporal.Duration.from(element.duration));
   });
-  const ok = (next || []).filter((e) => Temporal.Duration.from(e?.duration||'PT1M').compare(minDuration) < 0);
-  if (ok.length>0) {
+  const ok = (next || []).filter((e) => {
+    if (e?.duration) {
+      return minDuration.compare(Temporal.Duration.from(e.duration)) > 0;
+    }
+    return false;
+  });
+  if (ok.length > 0) {
     console.log(ok);
     return ok[0];
   }
@@ -46,7 +51,7 @@ function NowNext() {
         const r = await axios.get(`${url}/${q.get('sid')}/${q.get('region')}`);
         setNext(chooseNext(r.data.next));
         setNow(r.data.now);
-      })();  
+      })();
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -57,7 +62,7 @@ function NowNext() {
     let r;
     if (next) {
       const start = Date.parse(next.start);
-      const minutesToNext = Math.round((start-(new Date()))/1000/60);
+      const minutesToNext = Math.round((start - (new Date())) / 1000 / 60);
       console.log('minutes to next start', minutesToNext);
       if (minutesToNext <= 0) {
         r = '';
@@ -79,17 +84,17 @@ function NowNext() {
 
   console.log('text', text);
 
-  if ([0,1,2,3,4,5].includes((new Date()).getSeconds())) {
+  if ([0, 1, 2, 3, 4, 5].includes((new Date()).getSeconds())) {
     return (
       <Fade in={true} timeout={2000}>
-        <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", .9)}}>
+        <Box sx={{ margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", .9) }}>
           <Typography variant='h3'>{text}</Typography>
         </Box>
       </Fade>
-    );    
+    );
   } else {
     return (
-      <Box sx={{margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", 0)}}>
+      <Box sx={{ margin: '5%', color: '#F0F8FF', backgroundColor: alpha("#000080", 0) }}>
         <Typography >&nbsp;</Typography>
       </Box>
     );
@@ -97,21 +102,21 @@ function NowNext() {
 }
 
 export default function App() {
-  const b=0;
+  const b = 0;
   return (
     <Box sx={{
       width: '100%', height: '90vh',
       backgroundColor: alpha('#000', 0),
       display: 'grid', gridTemplateRows: '1fr 1fr 1fr'
-     }}>
-      <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
-        <Box sx={{border: b}}><img src={logo} alt='CBeebies'/></Box>
-        <Box sx={{border: b}}></Box>
-        <Box sx={{border: b, display: 'block', marginLeft: 'auto'}}><img alt='bounce' src='https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png'/></Box>
+    }}>
+      <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
+        <Box sx={{ border: b }}><img src={logo} alt='CBeebies' /></Box>
+        <Box sx={{ border: b }}></Box>
+        <Box sx={{ border: b, display: 'block', marginLeft: 'auto' }}><img alt='bounce' src='https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png' /></Box>
       </Box>
-      <Box sx={{border: b}}></Box>
-      <Box sx={{border: b, display: 'grid', gridTemplateColumns: '1fr'}}>
-        <Box sx={{border: b, margin: 'auto'}}><NowNext/></Box>
+      <Box sx={{ border: b }}></Box>
+      <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr' }}>
+        <Box sx={{ border: b, margin: 'auto' }}><NowNext /></Box>
       </Box>
     </Box>
   );

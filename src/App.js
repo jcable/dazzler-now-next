@@ -23,7 +23,7 @@ function chooseNext(next) {
     console.log(element, Temporal.Duration.from(element.duration));
   });
   const ok = (next || []).filter((e) => {
-    if (e?.duration) {
+    if (e?.duration && e?.title) {
       console.log(minDuration.toString(), e.duration);
       return Temporal.Duration.compare(minDuration, Temporal.Duration.from(e.duration)) < 0;
     }
@@ -33,7 +33,7 @@ function chooseNext(next) {
     console.log(ok);
     return ok[0];
   }
-  return undefined;
+  return { title: '' };
 }
 
 function NowNext() {

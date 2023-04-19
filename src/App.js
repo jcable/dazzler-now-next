@@ -18,13 +18,15 @@ const urls = {
 
 const minDuration = Temporal.Duration.from('PT2M');
 
+console.log('2M', minDuration);
+
 function chooseNext(next) {
-  const ok = (next || []).filter((e) => Temporal.Duration.from(e.duration) > minDuration);
+  next.forEach(element => {
+    console.log(element, Temporal.Duration.from(element.duration));
+  });
+  const ok = (next || []).filter((e) => Temporal.Duration.from(e?.duration||'PT1M') > minDuration);
   if (ok.length>0) {
     console.log(ok);
-    ok.forEach(element => {
-      console.log(element, Temporal.Duration.from(element.duration));
-    });
     return ok[0];
   }
   return undefined;

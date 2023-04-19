@@ -24,6 +24,7 @@ function chooseNext(next) {
   });
   const ok = (next || []).filter((e) => {
     if (e?.duration) {
+      console.log(minDuration.toString(), e.duration);
       return minDuration.compare(Temporal.Duration.from(e.duration)) > 0;
     }
     return false;

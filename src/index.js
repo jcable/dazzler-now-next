@@ -4,10 +4,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const params = Object.fromEntries(  
+  new URLSearchParams(window.location.search)
+)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App ...params />
   </React.StrictMode>
 );
 

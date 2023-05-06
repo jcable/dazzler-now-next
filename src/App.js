@@ -126,7 +126,9 @@ export default function App( params ) {
       </Box>
       <Box sx={{ border: b }}></Box>
       <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr' }}>
-        <Box sx={{ border: b, margin: 'auto' }}><NowNext sid={sid}, region={region, previewMinutes={previewMinutes, env={env}, minDuration={minDuration} /></Box>
+        <Box sx={{ border: b, margin: 'auto' }}>
+          <NowNext sid={sid} region={region} previewMinutes={previewMinutes} env={env} minDuration={minDuration} />
+        </Box>
       </Box>
     </Box>
   );

@@ -98,6 +98,20 @@ function NowNext() {
   }
 }
 
+function TopLeft() {
+  if (params.has('tl')) {
+    return <img src={logo} alt='CBeebies' />;
+  }
+  return '';
+}
+
+function TopRight() {
+  if (params.has('tr')) {
+    return <img alt='bounce' src='https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png' />;
+  }
+  return '';
+}
+
 export default function App() {
   const b = 0;
   return (
@@ -107,9 +121,9 @@ export default function App() {
       display: 'grid', gridTemplateRows: '1fr 1fr 1fr'
     }}>
       <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        <Box sx={{ border: b }}><img src={logo} alt='CBeebies' /></Box>
+        <Box sx={{ border: b }}><TopLeft/></Box>
         <Box sx={{ border: b }}></Box>
-        <Box sx={{ border: b, display: 'block', marginLeft: 'auto' }}><img alt='bounce' src='https://upload.wikimedia.org/wikipedia/commons/1/14/Animated_PNG_example_bouncing_beach_ball.png' /></Box>
+        <Box sx={{ border: b, display: 'block', marginLeft: 'auto' }}><TopRight/></Box>
       </Box>
       <Box sx={{ border: b }}></Box>
       <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr' }}>

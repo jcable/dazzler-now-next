@@ -45,7 +45,7 @@ function NowNext({ sid, region, previewMinutes, env, minDuration } ) {
       })();
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [env, minDuration, region, sid]);
 
   useEffect(() => {
     let r;
@@ -69,7 +69,7 @@ function NowNext({ sid, region, previewMinutes, env, minDuration } ) {
         setText('');
       }
     }
-  }, [next, now]);
+  }, [next, now, previewMinutes]);
 
   console.log('text', text);
 

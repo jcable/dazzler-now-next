@@ -16,15 +16,7 @@ const urls = {
   live: 'https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws'
 };
 
-const params = new URLSearchParams(window.location.search);
-
-const minDuration = Temporal.Duration.from(params.get('minDuration') || 'PT2M');
-const previewMinutes = parseInt(params.get('next') || '10', 10);
-const url = urls[params.get('env') || 'live'];
-const sid = params.get('sid');
-const region = params.get('region');
-
-function chooseNext(next) {
+function chooseNext(next, minDuration) {
   const ok = (next || []).filter((e) => {
     if (e?.duration && e?.title) {
       return Temporal.Duration.compare(minDuration, Temporal.Duration.from(e.duration)) < 0;
@@ -37,7 +29,7 @@ function chooseNext(next) {
   return { title: '' };
 }
 
-function NowNext() {
+function NowNext({ sid, region, previewMinutes, env, minDuration ) {
 
   const [text, setText] = useState('');
   const [now, setNow] = useState();
@@ -47,8 +39,8 @@ function NowNext() {
     let interval = null;
     interval = setInterval(() => {
       (async () => {
-        const r = await axios.get(`${url}/${sid}/${region}`);
-        setNext(chooseNext(r.data.next));
+        const r = await axios.get(`${urls[env]}/${sid}/${region}`);
+        setNext(chooseNext(r.data.next, minDuration));
         setNow(r.data.now);
       })();
     }, 5000);
@@ -112,7 +104,14 @@ function TopRight() {
   return '';
 }
 
-export default function App() {
+export default function App( params ) {
+  
+  const minDuration = Temporal.Duration.from(params.minDuration || 'PT2M');
+  const previewMinutes = parseInt(params.next || '10', 10);
+  const env = params.env || 'live';
+  const sid = params.sid;
+  const region = params.region;
+  
   const b = 0;
   return (
     <Box sx={{
@@ -127,7 +126,7 @@ export default function App() {
       </Box>
       <Box sx={{ border: b }}></Box>
       <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr' }}>
-        <Box sx={{ border: b, margin: 'auto' }}><NowNext /></Box>
+        <Box sx={{ border: b, margin: 'auto' }}><NowNext sid={sid}, region={region, previewMinutes={previewMinutes, env={env}, minDuration={minDuration} /></Box>
       </Box>
     </Box>
   );

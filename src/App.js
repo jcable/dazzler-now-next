@@ -16,7 +16,13 @@ const urls = {
   live: 'https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws'
 };
 
-const minDuration = Temporal.Duration.from('PT2M');
+const params = new URLSearchParams(window.location.search);
+
+const minDuration = Temporal.Duration.from(params.get('minDuration') || 'PT2M');
+const previewMinutes = parseInt(params.get('next') || '10', 10);
+const url = urls[params.get('env') || 'live'];
+const sid = params.get('sid');
+const region = params.get('region');
 
 function chooseNext(next) {
   const ok = (next || []).filter((e) => {
@@ -38,12 +44,10 @@ function NowNext() {
   const [next, setNext] = useState();
 
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search);
     let interval = null;
     interval = setInterval(() => {
       (async () => {
-        const url = urls[q.get('env') || 'live'];
-        const r = await axios.get(`${url}/${q.get('sid')}/${q.get('region')}`);
+        const r = await axios.get(`${url}/${sid}/${region}`);
         setNext(chooseNext(r.data.next));
         setNow(r.data.now);
       })();
@@ -52,8 +56,6 @@ function NowNext() {
   }, []);
 
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search);
-    const n = parseInt(q.get('next') || '10', 10);
     let r;
     if (next) {
       const start = Date.parse(next.start);
@@ -62,7 +64,7 @@ function NowNext() {
       if (minutesToNext <= 0) {
         r = '';
       }
-      if (minutesToNext < n) {
+      if (minutesToNext < previewMinutes) {
         r = `next up: ${next.title}`;
       }
     }

@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Dazzler Now/Next
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a demo website of a simple React based 16:9 TV overlay using HTML5 graphics.
 
-## Available Scripts
+## Page Layout
 
-In the project directory, you can run:
+The page is laid out into three vertical segments, top middle and bottom.
 
-### `npm start`
+The top segment is subdivided horizontally into left, middle and right.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Left and right segments have optional demonstration graphical elements.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The middle segment is currently unused.
 
-### `npm test`
+The bottom segment is a single, full width item with now/next data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Customisation using url parameters
 
-### `npm run build`
+### DoG customisation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The left and right DoG items are disabled by default. Enable them with tl=yes and/or tr=yes url parameters.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Now/Next customisation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Now/Next feature can be configured with the following url parameters:
 
-### `npm run eject`
+- sid specifies the channel to retrieve data from. if not present, no Now/Next information will be shown
+- env can be 'test' or 'live', defaults to 'live'
+- region the AWS region the channel is running in, defaults to eu-west-1
+- minDuration is the minimum duration of a programme to be included in the now next display.
+- previewMinutes is the time before the start of the next programme when the next display will start to be shown
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Further customisation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The file App.js contains all the logic for the programme. It can be modified to change the styling of the Now/Next information or the DoG urls or any element of the page.

@@ -29,7 +29,7 @@ function chooseNext(next, minDuration) {
   return { title: '' };
 }
 
-function NowNext({ sid, region, previewMinutes, env, minDuration ) {
+function NowNext({ sid, region, previewMinutes, env, minDuration } ) {
 
   const [text, setText] = useState('');
   const [now, setNow] = useState();

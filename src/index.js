@@ -11,7 +11,7 @@ const params = Object.fromEntries(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App ...params />
+    <App {...params} />
   </React.StrictMode>
 );
 

@@ -122,7 +122,7 @@ export default function App( params ) {
       <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
         <Box sx={{ border: b }}><TopLeft show={params.tl}/></Box>
         <Box sx={{ border: b }}></Box>
-        <Box sx={{ border: b, display: 'block', marginLeft: 'auto' }}><TopRight show={params.tl}/></Box>
+        <Box sx={{ border: b, display: 'block', marginLeft: 'auto' }}><TopRight show={params.tr}/></Box>
       </Box>
       <Box sx={{ border: b }}></Box>
       <Box sx={{ border: b, display: 'grid', gridTemplateColumns: '1fr' }}>

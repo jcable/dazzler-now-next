@@ -71,8 +71,9 @@ function NowNext({ sid, region, previewMinutes, env, minDuration } ) {
     }
   }, [next, now, previewMinutes]);
 
-  console.log('text', text);
-
+  if (!sid) {
+    return '';
+  }
   if ([0, 1, 2, 3, 4, 5].includes((new Date()).getSeconds())) {
     return (
       <Fade in={true} timeout={2000}>
@@ -110,7 +111,7 @@ export default function App( params ) {
   const previewMinutes = parseInt(params.next || '10', 10);
   const env = params.env || 'live';
   const sid = params.sid;
-  const region = params.region;
+  const region = params.region || 'eu-west-1';
   
   const b = 0;
   return (

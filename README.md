@@ -1,4 +1,4 @@
-# Dazzler Now/Next
+# React Now/Next
 
 This is a demo website of a simple React based 16:9 TV overlay using HTML5 graphics.
 
@@ -22,7 +22,9 @@ The left and right DoG items are disabled by default. Enable them with tl=yes an
 
 ### Now/Next customisation
 
-The Now/Next feature can be configured with the following url parameters:
+The Now/Next feature uses the Dazzler Now/Next api which is experimental. Other APIs can be plumbed in.
+
+It can be configured with the following url parameters:
 
 - sid specifies the channel to retrieve data from. if not present, no Now/Next information will be shown
 - env can be 'test' or 'live', defaults to 'live'

@@ -206,7 +206,7 @@ function Bottom({ params }) {
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',
         display: 'grid', gridTemplateColumns: '1fr 4fr 1fr'
       }}>
-        <Box>{steady ? <Fade in={true} timeout={1000}><Typography color={iplayerPink} marginLeft={5} marginTop={3}>iPlayer</Typography></Fade>
+        <Box>{steady ? <Fade in={true} timeout={1000}><Typography color={iplayerPink} marginLeft={5} marginTop={3}>iPLAYER</Typography></Fade>
         : <SequenceAnimator duration={3000} onSequenceEnd={() => setSteady(true)}>
           {introImages.map((im) => (<img src={im} alt='BBC'/>))}
         </SequenceAnimator>
@@ -242,7 +242,7 @@ export default function App(params) {
       <CssBaseline />
       <Box sx={{
         width: '1920px', height: '1080px',
-        backgroundColor: alpha('#f0f0f0', 0.6),
+        backgroundColor: alpha('#000000', 1.0),
         display: 'grid', gridTemplateRows: '1fr 6fr 1fr'
       }}>
         <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>

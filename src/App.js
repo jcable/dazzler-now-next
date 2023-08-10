@@ -208,7 +208,7 @@ function Bottom({ params }) {
       }}>
         <Box>{steady ? <Fade in={true} timeout={1000}><Typography color={iplayerPink} marginLeft={5} marginTop={3}>iPlayer</Typography></Fade>
         : <SequenceAnimator duration={3000} onSequenceEnd={() => setSteady(true)}>
-          {introImages.map((im) => (<img src={im} alt='BBC'/>))}
+          {introImages.map((im, index) => (<img key={index} src={im} alt='BBC'/>))}
         </SequenceAnimator>
         }
             

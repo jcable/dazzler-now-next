@@ -88,7 +88,7 @@ const theme = createTheme({
     paddingLeft: 0,
     paddingRight: 0,
     paddingBottom: 0,
-  }
+  },
   typography: {
     fontFamily: 'ReithSansBold, Arial',
     fontSize: 40,

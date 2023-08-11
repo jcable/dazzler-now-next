@@ -79,6 +79,16 @@ const urls = {
 };
 
 const theme = createTheme({
+  body: {
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0,
+    paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+  }
   typography: {
     fontFamily: 'ReithSansBold, Arial',
     fontSize: 40,
@@ -243,7 +253,7 @@ export default function App(params) {
       <CssBaseline />
       <Box sx={{
         width: '1920px', height: '1080px',
-        backgroundColor: alpha('#ffffff', 1),
+        backgroundColor: alpha('#ffffff', 0),
         display: 'grid', gridTemplateRows: '1fr 6fr 1fr'
       }}>
         <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>

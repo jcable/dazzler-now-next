@@ -80,6 +80,7 @@ const urls = {
 
 const theme = createTheme({
   body: {
+    color: alpha('#000000',0),
     marginTop: 0,
     marginLeft: 0,
     marginRight: 0,
@@ -252,7 +253,8 @@ export default function App(params) {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={{
-        width: '1920px', height: '1080px',
+        // width: '1920px', height: '1080px',
+        width: 'auto', height: '90vh',
         backgroundColor: alpha('#ffffff', 0),
         display: 'grid', gridTemplateRows: '1fr 6fr 1fr'
       }}>

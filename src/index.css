@@ -1,4 +1,5 @@
 body {
+  color: rgba(0,0,0,0);
   margin: 0;
   font-family: 'BBCReithSans_W_Rg', sans-serif;
   -webkit-font-smoothing: antialiased;

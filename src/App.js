@@ -116,10 +116,11 @@ function longtitle(item) {
   const b = titlefor(item, 'brand');
   const s = titlefor(item, 'series');
   const e = item.title_hierarchy?.titles?.find((t) => !t.inherited_from)?.title?.$;
+  const t = b ? `${b} / ` : '';
   if (s) {
-    return `${b} / ${s} / ${e}`;
+    return `${t}${s} / ${e}`;
   }
-  return `${b} / ${e}`;
+  return `${t}${e}`;
 }
 
 function chooseNext(next, minDuration) {

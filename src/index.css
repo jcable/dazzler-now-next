@@ -20,13 +20,3 @@ img {
   font-family: 'BBCReithSans_W_Bd';
   src: local('BBCReithSans_W_Bd'), url(./fonts/BBCReithSans_W_Bd.woff2) format('woff2');
 }
-
-.title {
-  font-family: "BBCReithSans_W_Bd";
-  font-size: '40px';
-}
-
-.navigation {
-  font-family: "BBCReithSans_W_Rg";
-  font-size: '40px';
-}

@@ -3,9 +3,6 @@ import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
-import ReithSansBoldWoff2 from './fonts/BBCReithSans_W_Bd.woff2';
-import ReithSansRegularWoff2 from './fonts/BBCReithSans_W_Rg.woff2';
 // import logo from './images/intro.png'
 import { Temporal } from 'temporal-polyfill'
 import { SequenceAnimator } from 'react-sequence-animator';
@@ -157,9 +154,12 @@ function Bottom({ params }) {
         } else {
           setOn(false);
         }
-        const r = await axios.get(`${urls[env]}/${sid}/${region}`);
-        setNext(chooseNext(r.data.next, minDuration));
-        setNow(r.data.now);
+        const r = await fetch(`${urls[env]}/${sid}/${region}`);
+        if (r.ok) {
+          const data = await r.json()
+          setNext(chooseNext(data.next, minDuration));
+          setNow(r.data.now);  
+        }
       })();
     }, 5000);
     return () => clearInterval(interval);

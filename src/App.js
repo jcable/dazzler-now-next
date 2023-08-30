@@ -3,9 +3,13 @@ import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-// import logo from './images/intro.png'
+import { ThemeProvider, alpha } from '@mui/material/styles';
+import { CssBaseline, createTheme } from '@mui/material';
 import { Temporal } from 'temporal-polyfill'
 import { SequenceAnimator } from 'react-sequence-animator';
+import ReithSansBoldWoff2 from './fonts/BBCReithSans_W_Bd.woff2';
+import ReithSansRegularWoff2 from './fonts/BBCReithSans_W_Rg.woff2';
+// import logo from './images/intro.png'
 
 import i00 from './images/intro/Chameleon_LT_IPP_Block_Opener_00000.png';
 import i01 from './images/intro/Chameleon_LT_IPP_Block_Opener_00001.png';
@@ -72,6 +76,48 @@ const urls = {
   test: 'https://jfayiszondlcqngo5vavioz6bq0ibxen.lambda-url.eu-west-1.on.aws/',
   live: 'https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws'
 };
+
+const theme = createTheme({
+  body: {
+    backgroundColor:  alpha('#000000', 0),
+    color: 'black',
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0,
+    paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+  },
+  typography: {
+    fontFamily: 'ReithSansBold, Arial',
+    fontSize: 40,
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        background-color: rgba(0,0,0,0);
+        @font-face {
+          font-family: 'ReithSansBold';
+          font-style: bold;
+          font-display: swap;
+          font-weight: 400;
+          src: local('ReithSans'), local('ReithSans-Bold'), url(${ReithSansBoldWoff2}) format('woff2');
+          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+        }
+        @font-face {
+          font-family: 'ReithSansRegular';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: local('ReithSans'), local('ReithSans-Regular'), url(${ReithSansRegularWoff2}) format('woff2');
+          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
+        }
+      `,
+    },
+  },
+});
 
 function titlefor(o, rel) {
   return o.title_hierarchy?.titles?.find((t) => t.inherited_from?.link?.rel === `pips-meta:${rel}`)?.title?.$;
@@ -174,6 +220,7 @@ function Bottom({ params }) {
         fontFamily: 'BBCReithSans_W_Rg',
         fontSize: 40,
         width: 'auto', color: '#ffffff',
+        height: 100,
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',
         display: 'grid', gridTemplateColumns: '1fr 4fr 1fr'
       }}>
@@ -209,6 +256,8 @@ function TopRight({ show }) {
 
 export default function App(params) {
   return (
+    <ThemeProvider theme={theme}>
+    <CssBaseline />
       <Box sx={{
         // width: '1920px', height: '1080px',
         width: 'auto', height: '90vh',
@@ -222,5 +271,6 @@ export default function App(params) {
         <Box></Box>
         <Bottom params={params} />
       </Box>
+    </ThemeProvider>
   );
 }

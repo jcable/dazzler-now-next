@@ -206,6 +206,7 @@ function Bottom({ params }) {
        addEndListener={() => setSteady(false)}>
       <Box sx={{
         height: 120, width: 'auto', color: 'white',
+        fontSize: 40,
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',
         display: 'grid', gridTemplateColumns: '1fr 4fr 1fr'
       }}>

@@ -158,7 +158,7 @@ function Bottom({ params }) {
         if (r.ok) {
           const data = await r.json()
           setNext(chooseNext(data.next, minDuration));
-          setNow(r.data.now);  
+          setNow(data.now);  
         }
       })();
     }, 5000);

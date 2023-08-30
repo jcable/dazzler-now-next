@@ -171,6 +171,7 @@ function Bottom({ params }) {
       onEntered={() => console.log('entered')}
        addEndListener={() => setSteady(false)}>
       <Box sx={{
+        fontFamily: 'BBCReithSans_W_Rg',
         fontSize: 40,
         width: 'auto', color: '#ffffff',
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',

@@ -79,7 +79,7 @@ const urls = {
 
 const theme = createTheme({
   body: {
-    background:  alpha('#000000', 0),
+    backgroundColor:  alpha('rgb(0,0,0)', 0.0),
     color: 'black',
     marginTop: 0,
     marginLeft: 0,
@@ -216,10 +216,8 @@ function Bottom({ params }) {
       onEntered={() => console.log('entered')}
        addEndListener={() => setSteady(false)}>
       <Box sx={{
-        // fontFamily: 'BBCReithSans_W_Rg',
-        // fontSize: 40,
         width: 'auto', color: 'white',
-        height: 200,
+        height: 150,
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',
         display: 'grid', gridTemplateColumns: '1fr 4fr 1fr'
       }}>

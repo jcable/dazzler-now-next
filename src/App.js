@@ -205,8 +205,7 @@ function Bottom({ params }) {
       onEntered={() => console.log('entered')}
        addEndListener={() => setSteady(false)}>
       <Box sx={{
-        width: 'auto', color: 'white',
-        height: 150,
+        height: 120, width: 'auto', color: 'white',
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',
         display: 'grid', gridTemplateColumns: '1fr 4fr 1fr'
       }}>

@@ -78,18 +78,6 @@ const urls = {
 };
 
 const theme = createTheme({
-  body: {
-    backgroundColor:  alpha('rgb(0,0,0)', 0.0),
-    color: 'black',
-    marginTop: 0,
-    marginLeft: 0,
-    marginRight: 0,
-    marginBottom: 0,
-    paddingTop: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingBottom: 0,
-  },
   typography: {
     fontFamily: 'ReithSansBold, Arial',
     fontSize: 40,

@@ -4,7 +4,8 @@ import Slide from '@mui/material/Slide';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline, createTheme } from '@mui/material';
+import { createTheme } from '@mui/material';
+// import { CssBaseline, createTheme } from '@mui/material';
 import { Temporal } from 'temporal-polyfill'
 import { SequenceAnimator } from 'react-sequence-animator';
 import ReithSansBoldWoff2 from './fonts/BBCReithSans_W_Bd.woff2';
@@ -239,10 +240,11 @@ function TopRight({ show }) {
   return '';
 }
 
+    // <CssBaseline />
+
 export default function App(params) {
   return (
     <ThemeProvider theme={theme}>
-    <CssBaseline />
       <Box sx={{
         // width: '1920px', height: '1080px',
         width: 'auto', height: '90vh',

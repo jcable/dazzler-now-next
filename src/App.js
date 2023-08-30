@@ -210,7 +210,7 @@ function Bottom({ params }) {
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',
         display: 'grid', gridTemplateColumns: '1fr 4fr 1fr'
       }}>
-        <Box>{steady ? <Fade in={true} timeout={1000}><Typography color={iplayerPink} marginLeft={5} marginTop={3}>iPLAYER</Typography></Fade>
+        <Box>{steady ? <Fade in={true} timeout={1000}><Typography fontSize='40px' fontWeight={400} color={iplayerPink} marginLeft={5} marginTop={3}>iPLAYER</Typography></Fade>
         : <SequenceAnimator duration={3000} onSequenceEnd={() => setSteady(true)}>
           {introImages.map((im, index) => (<img key={index} src={im} alt='BBC'/>))}
         </SequenceAnimator>

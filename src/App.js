@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { ThemeProvider, alpha } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, createTheme } from '@mui/material';
 import { Temporal } from 'temporal-polyfill'
 import { SequenceAnimator } from 'react-sequence-animator';

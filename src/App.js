@@ -7,7 +7,7 @@ import { ThemeProvider, alpha } from '@mui/material/styles';
 import axios from 'axios';
 import ReithSansBoldWoff2 from './fonts/BBCReithSans_W_Bd.woff2';
 import ReithSansRegularWoff2 from './fonts/BBCReithSans_W_Rg.woff2';
-// import logo from './intro.png'
+// import logo from './images/intro.png'
 import { Temporal } from 'temporal-polyfill'
 import { CssBaseline, createTheme } from '@mui/material';
 import { SequenceAnimator } from 'react-sequence-animator';
@@ -97,6 +97,7 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: `
+        background-color: rgba(0,0,0,0);
         @font-face {
           font-family: 'ReithSansBold';
           font-style: bold;
@@ -117,7 +118,6 @@ const theme = createTheme({
     },
   },
 });
-
 
 function titlefor(o, rel) {
   return o.title_hierarchy?.titles?.find((t) => t.inherited_from?.link?.rel === `pips-meta:${rel}`)?.title?.$;

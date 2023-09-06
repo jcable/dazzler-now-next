@@ -3,13 +3,8 @@ import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { ThemeProvider } from '@mui/material/styles';
-import { createTheme } from '@mui/material';
-// import { CssBaseline, createTheme } from '@mui/material';
 import { Temporal } from 'temporal-polyfill'
 import { SequenceAnimator } from 'react-sequence-animator';
-import ReithSansBoldWoff2 from './fonts/BBCReithSans_W_Bd.woff2';
-import ReithSansRegularWoff2 from './fonts/BBCReithSans_W_Rg.woff2';
 // import logo from './images/intro.png'
 
 import i00 from './images/intro/Chameleon_LT_IPP_Block_Opener_00000.png';
@@ -78,35 +73,6 @@ const urls = {
   live: 'https://ypdjc6zbc5cnvth24lk3mm45sm0qtgps.lambda-url.eu-west-1.on.aws'
 };
 
-const theme = createTheme({
-  typography: {
-    fontFamily: 'ReithSansBold, Arial',
-    fontSize: 40,
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: `
-        @font-face {
-          font-family: 'ReithSansBold';
-          font-style: bold;
-          font-display: swap;
-          font-weight: 400;
-          src: local('ReithSans'), local('ReithSans-Bold'), url(${ReithSansBoldWoff2}) format('woff2');
-          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
-        }
-        @font-face {
-          font-family: 'ReithSansRegular';
-          font-style: normal;
-          font-display: swap;
-          font-weight: 400;
-          src: local('ReithSans'), local('ReithSans-Regular'), url(${ReithSansRegularWoff2}) format('woff2');
-          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
-        }
-      `,
-    },
-  },
-});
-
 function titlefor(o, rel) {
   return o.title_hierarchy?.titles?.find((t) => t.inherited_from?.link?.rel === `pips-meta:${rel}`)?.title?.$;
 }
@@ -160,7 +126,7 @@ function NowNext({ now, next, previewMinutes }) {
     }
   }
   return (
-    <Fade in={true} timeout={500}><Typography marginTop={3}>{text}</Typography></Fade>
+    <Fade in={true} timeout={500}><Typography fontSize={'3.5rem'} ce>{text}</Typography></Fade>
   );
 }
 
@@ -169,13 +135,15 @@ function Bottom({ params }) {
   const minDuration = Temporal.Duration.from(params.minDuration || 'PT2M');
   const previewMinutes = parseInt(params.next || '10', 10);
   const env = params.env || 'live';
-  const sid = params.sid;
-  const region = params.region || 'eu-west-1';
+  const sid = params.sid || 'History_Channel';
+  const region = params.region || 'eu-west-2';
 
   const [on, setOn] = useState(false);
   const [now, setNow] = useState();
   const [next, setNext] = useState();
   const [steady, setSteady] = useState(false);
+
+  const FALSE = false;
 
   // 5 second timer
   useEffect(() => {
@@ -186,13 +154,13 @@ function Bottom({ params }) {
         if ((sOfm / 2) < 12) {
           setOn(true);
         } else {
-          setOn(false);
+          setOn(FALSE);
         }
         const r = await fetch(`${urls[env]}/${sid}/${region}`);
         if (r.ok) {
           const data = await r.json()
           setNext(chooseNext(data.next, minDuration));
-          setNow(data.now);  
+          setNow(data.now);
         }
       })();
     }, 5000);
@@ -200,24 +168,24 @@ function Bottom({ params }) {
   });
 
   return (
-    <Slide direction="up" 
+    <Slide direction="up"
       in={on} mountOnEnter unmountOnExit
       onEntered={() => console.log('entered')}
-       addEndListener={() => setSteady(false)}>
+      addEndListener={() => setSteady(FALSE)}>
       <Box sx={{
         height: 120, width: 'auto', color: 'white',
-        fontSize: 40,
         background: 'linear-gradient(to right, rgba(15, 15, 15, .7), rgba(245, 73, 151, .7))',
         display: 'grid', gridTemplateColumns: '1fr 4fr 1fr'
       }}>
-        <Box>{steady ? <Fade in={true} timeout={1000}><Typography fontSize='40px' fontWeight={400} color={iplayerPink} marginLeft={5} marginTop={3}>iPLAYER</Typography></Fade>
-        : <SequenceAnimator duration={3000} onSequenceEnd={() => setSteady(true)}>
-          {introImages.map((im, index) => (<img key={index} src={im} alt='BBC'/>))}
-        </SequenceAnimator>
+        <Box>{steady ? <Fade in={true} timeout={1000}>
+            <Typography fontSize={'4rem'} color={iplayerPink} marginLeft={5} marginTop={3}>iPLAYER</Typography>
+          </Fade>
+          : <SequenceAnimator duration={3000} onSequenceEnd={() => setSteady(true)}>
+            {introImages.map((im, index) => (<img key={index} src={im} alt='BBC' />))}
+          </SequenceAnimator>
         }
-            
         </Box>
-        <Box>
+        <Box display='flex' alignItems='center'>
           {steady ? (<NowNext now={now} next={next} previewMinutes={previewMinutes} />) : ''}
         </Box>
         <Box></Box>
@@ -240,24 +208,19 @@ function TopRight({ show }) {
   return '';
 }
 
-    // <CssBaseline />
-
 export default function App(params) {
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{
-        // width: '1920px', height: '1080px',
-        width: 'auto', height: '90vh',
-        display: 'grid', gridTemplateRows: '1fr 6fr 1fr'
-      }}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <Box><TopLeft show={params.tl} /></Box>
-          <Box></Box>
-          <Box sx={{ display: 'block', marginLeft: 'auto' }}><TopRight show={params.tr} /></Box>
-        </Box>
+    <Box sx={{
+      width: 'auto', height: '100vh',
+      display: 'grid', gridTemplateRows: '1fr 6fr 1fr'
+    }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
+        <Box><TopLeft show={params.tl} /></Box>
         <Box></Box>
-        <Bottom params={params} />
+        <Box sx={{ display: 'block', marginLeft: 'auto' }}><TopRight show={params.tr} /></Box>
       </Box>
-    </ThemeProvider>
+      <Box></Box>
+      <Bottom params={params} />
+    </Box>
   );
 }

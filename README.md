@@ -26,12 +26,20 @@ The Now/Next feature uses the Dazzler Now/Next api which is experimental. Other 
 
 It can be configured with the following url parameters:
 
-- sid specifies the channel to retrieve data from. if not present, no Now/Next information will be shown
+- sid specifies the channel to retrieve data from. if not present, 'History_Channel' is used
 - env can be 'test' or 'live', defaults to 'live'
-- region the AWS region the channel is running in, defaults to eu-west-1
-- minDuration is the minimum duration of a programme to be included in the now next display.
-- previewMinutes is the time before the start of the next programme when the next display will start to be shown
+- region the AWS region the channel is running in, defaults to eu-west-2
+- minDuration is the minimum duration of a programme to be included in the now next display, as an ISO 8601 duration. Default 'PT2M'.
+- previewMinutes is the time before the start of the next programme when the next display will start to be shown, as integer minutes, default '2'.
 
 ## Further customisation
 
 The file App.js contains all the logic for the programme. It can be modified to change the styling of the Now/Next information or the DoG urls or any element of the page.
+
+These defaults are hard coded:
+
+- Interval between polling for now/next information: 5 seconds.
+- now/next will be shown during the first 12 seconds of every 1/2 minute.
+- time to fade in the lower third: 1 second
+- time to animate the BBC Blocks: 3 seconds
+- time to fade in the now or next: 1/2 second
